@@ -1,0 +1,49 @@
+        <div>
+            {{!-- <div class="notification loadingBox">
+                Loading …
+            </div>
+            <div class="notification infoBox">
+                <span>Info</span>
+            </div> --}}
+            <div class="notification errorBox">
+                <span>{{message}}</span>
+            </div>
+        </div>
+
+<section id="viewRegister">
+            <h2>Create your account:</h2>
+            <form id="formRegister" action="/register" method="POST">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Email" value="{{oldInput.email}}">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Enter your Username" value="{{oldInput.username}}">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Password" value="{{oldInput.password}}">
+                <label for="rePassword">Repeat Password:</label>
+                <input type="password" id="rePassword" name="rePassword" placeholder="Repeat Password" value="{{oldInput.rePassword}}">
+                <input type="submit" class="register">
+            </form>
+        </section>
+    
+{{!-- <section class="notifications">
+    <p class="notification-message">{{message}}</p>
+</section>
+
+<form class="text-center border border-light p-5" action="/register" method="POST">
+    <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" placeholder="Username" name="username" value="{{oldInput.username}}">
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" placeholder="Password" name="password" value="{{oldInput.password}}">
+    </div>
+
+    <div class="form-group">
+        <label for="repeatPassword">Repeat Password</label>
+        <input type="password" class="form-control" placeholder="Repeat-Password" name="repeatPassword"
+            value="{{oldInput.repeatPassword}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form> --}}

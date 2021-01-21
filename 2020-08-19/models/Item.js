@@ -1,0 +1,39 @@
+module.exports = mongoose => {
+  const { Schema, model: Model } = mongoose;
+  const { String, ObjectId, Number } = Schema.Types;
+
+  const itemSchema = new Schema({
+    name: {
+      type: String,
+      required: true
+    },
+    price: {
+      type: Number,
+      required: true
+    },
+    imageUrl: {
+      type: String,
+      required: true
+    },
+    brand: {
+      type: String,
+      required: true
+    },
+    description: {
+      type: String,
+      required: true
+    },
+    creatorId: {
+      type: ObjectId,
+      required: true
+    },
+    peopleWhoIncremented: [
+      {
+        type: ObjectId,
+        ref: "User"
+      }
+    ]
+  });
+
+  return Model("Item", itemSchema);
+};

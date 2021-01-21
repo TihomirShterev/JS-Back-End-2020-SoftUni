@@ -1,0 +1,72 @@
+﻿По време на изпита не ми стигна времето да направя динамичен профил
+и валидация на edit-формуляра, защото ми спря тока
+
+[x] Зачиствам ItemsDB, за да почна наново: cmd.exe Run as admin -> mongo -> use ItemsDB -> db.dropDatabase()
+[x] npm init -y, npm i, npx nodemon start
+[x] Тестваме в браузъра дали сървърът работи
+[[]] Последователност: model & view -> controller -> router -> routes
+[x] В models създаваме User и Item модели
+- [x] Настройваме пропъртитата на моделите според задачата и преименуваме, където е нужно
+- [x] В models/User създаваме userSchema и я експортваме
+- [x] В models/index.js добавяме models/User и го експортваме
+- [x] В models/Item създаваме itemSchema и я експортваме
+- [x] В models/index.js добавяме models/Item и го експортваме
+[] Правим всички страници достъпни за разглеждане (т.е. статични)
+- [x] Разпределяме html-ите на шаблони и паршъли и изтриваме ненужните части.
+- [x] В шаблоните оправяме релативните пътища към стиловете и изображенията
+- [x] Визуализираме (get-ваме, рендерираме) view-тата
+-- [x] В controllers/homeController.js добавяме models, за да използваме User и Item моделите в заявките
+-- [x] В controllers/homeController.js създаваме get.home функционалност, в която рендерираме home/guest.hbs и loggedIn.hbs, и я експортваме
+-- [x] В controllers/index.js добавяме controllers/homeController и го експортваме
+-- [x] В routers/homeRouter.js добавяме controllers/homeController, за да създадем пътищата към views
+-- [x] В routers/index.js добавяме routers/homeRouter
+-- [x] В config/routes добавяме пътя към home страницата
+-- [x] Повтаряме процедурата до тук за userController.js (get.login и get.register (евентуално и get.profile)) и за itemController.js (get.create, get.details, get.edit)
+[x] Правим login и register формулярите да работят (post-заявките) - authentication частта. Правим get.logout да работи.
+- [x] В register.hbs и login.hbs, ако липсват във формуляра, допълваме action, method, href и name-атрибутите
+- [x] В controllers/userController създаваме post.register и post.login
+- [x] Правим логиката на post.register и на post.login
+- [x] В routers/userRouter.js добавяме postRegister и postLogin
+- [x] В controllers/userController.js добавяме utils(за jwt) и config(за cookie-то), за да ги използваме в post-заявките.
+- [x] В controllers/userController.js правим логиката на get.logout и я добавяме в routers/userRouter.js
+- [x] Обработваме post.login паролата
+-- [x] В models/index.js и в models/User.js добавяме bcrypt, за да хешираме паролата
+-- [x] В models/User.js за userSchema-та закачаме метода comparePasswords()
+-- [x] В models/User.js добавяме saltRounds и си създаваме pre-hook
+-- [x] Зачистване на потребителите и регистрираме нови потребители
+- [x] Правим headers.hbs според условиeто за authentication
+-- [x] Във header.hbs слагаме проверка дали потребителят е логнат
+-- [x] В config/express.js добавяме utils, за да използваме authMiddleware.js
+[x] Правим логиката, свързана с Item-модела. Т.е. CRUD (без R) операциите и показването списъка със създадените динамични items.
+Последователност: допълване в views -> функционалност в itemController -> добавяне в itemRouter
+- [x] Правим create формуляра да работи (post.create) 
+-- [*] В create.hbs създаваме помощната променлива checkbox, за да я използваме в controllers/itemController/post.create
+- [x] Показваме създадените динамични items (get.home)
+- [x] Показваме details на избрания item (get.details)
+-- [x] В details.hbs създаваме помощни променливи isCreator и isAlreadyIncremented, 
+за да ги използваме в controllers/itemController/get.details и обновяваме item-обекта
+-- [x] Правим edit формуляра да работи (get.edit и post.edit)
+-- [x] В edit.hbs допълваме value-атрибута, за да може input-полетата да съдържат 
+текущата информация за избрания item по подразбиране, а не да са празни
+-- [x] Правим delete функционалността (get.delete)
+-- [x] Правим increment функционалността (get.increment) - вземаме itemId и го пушваме в масива peopleWhoIncremented
+-- [x*] Правим сортиране и лимитиране на items - в controllers/homeController/get.home (и в loggedIn.hbs, ако има бутони за сортиране)
+- [x*] Показваме динамичен profile (get.profile)
+-- [x] В models/User.js добавяме пропърти myItems, за да можем да го използваме при регистрация, като след това
+ще трябва да дропна потребителите в mongo и да почна наново, за да могат новите потребители да притежават пропъртито
+-- [x] В controllers/itemController/get.increment обновяваме itemsIncremented
+-- [x] В controllers/userController/post.register добавяме помощната променлива myItems и в get.profile довършваме логиката
+- [*] Правим search функционалността
+-- [] В items.hbs в първия input-tag добавямe name="search"
+-- [] В controllers/homeController/get.home правим логиката
+[x] Валидираме (проверяваме за спазване на изискванията) и обработваме грешките в input-полетата на формулярите
+- [x] Във register.hbs, login.hbs и create.hbs добавяме value-атрибути (и message), за да може, когато потребителят направи грешка,
+да бъдат запазени въведените данни в полетата, така че да не трябва да попълва целия формуляр наново
+- [x] В utils/index.js добавяме registerMiddlewareValidator, loginMiddlewareValidator, createMiddlewareValidator и formValidator
+- [x] В controllers/userController.js добавяме utils, за да използваме formValidator в post.register и post.login
+- [x] В controllers/itemController.js добавяме utils, за да използваме formValidator в post.create
+- [x] В routers/userRouter.js добавяме utils, за да използваме registerMiddlewareValidator и loginMiddlewareValidator в post.register и post.login
+- [x] В routers/itemRouter.js добавяме utils, за да използваме createMiddlewareValidator в post.create
+[x] Регулираме достъпа до пътищата за гост и за логнат потребител
+- [x] В utils/index.js добавяме isAuthNeededMiddleware и го експортваме
+- [x] Във routers/userRouter.js и itemRouter.js добавяме utils, за да използваме isAuthNeededMiddleware в заявките

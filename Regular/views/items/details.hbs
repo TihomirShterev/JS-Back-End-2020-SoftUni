@@ -1,0 +1,60 @@
+<div class="container">
+    <h1 class="my-4">{{title}}
+    </h1>
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fluid"
+                src="{{imageUrl}}"
+                alt="JavaScript" />
+        </div>
+
+        <div class="col-md-4 text-center">
+            <h4 class="my-3">Duration</h4>
+            <p>{{duration}}</p>
+            <h3 class="my-3">Description</h3>
+            <p>{{description}}</p>
+
+        {{#if isCreator}}
+            <a class="btn btn-danger" href="/items/delete/{{_id}}">Delete</a>
+            <a class="btn btn-warning" href="/items/edit/{{_id}}">Edit</a>
+        {{else}}
+
+            {{#if isAlreadyIncremented}}
+            <span class="enrolled-span">You are already enrolled</span>
+            {{else}}
+            <a class="btn btn-primary" href="/items/increment/{{_id}}">Enroll</a>
+            {{/if}}
+        {{/if}}
+
+        </div>
+    </div>
+</div>
+
+{{!-- <div class="offer-details">
+    <h1>{{ name }}</h1>
+    <div class="info">
+        <img src="{{ imageUrl }}" alt="">
+        <div class="description">{{ description }}
+            <br>
+            <br>
+            <p> <strong>Buyers:</strong> {{ peopleWhoIncremented }}</p>
+            <br>
+            <p class="price">${{ price }}</p>
+        </div>
+    </div>
+    <div class="actions">
+        {{#if isCreator}}
+            <a href="/items/edit/{{ _id }}">Edit</a>
+            <a href="/items/delete/{{ _id}}">Delete</a>
+        {{else}}
+
+            {{#if isAlreadyIncremented}}
+                <span>You bought it</span>
+            {{else}}
+                <a href="/items/increment/{{ _id }}">Buy</a>
+            {{/if}}
+        {{/if}}
+    </div>
+</div> --}}

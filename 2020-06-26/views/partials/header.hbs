@@ -1,0 +1,38 @@
+<nav>
+    <a>Theater</a>
+    <ul>
+        <li><a href="/">Home </a></li>
+    {{#if isLoggedIn}}
+        <li><a href="/logout">Logout</a></li>
+    {{else}}
+        <li><a href="/login">Login</a></li>
+        <li><a href="/register">Register</a></li>
+    {{/if}}
+    </ul>
+</nav>
+
+{{!-- <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <a class="navbar-brand" href="/">Tutorials</a>
+
+    <ul class="navbar-nav ml-auto">
+
+    {{#if isLoggedIn}}
+        <li class="nav-item">
+            <a class="nav-link" href="#">Welcome, {{username}}</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    {{else}}
+        <li class="nav-item">
+            <a class="nav-link" href="/login">Login</a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="/register">Register</a>
+        </li>
+    {{/if}}
+
+    </ul>
+</nav> --}}
